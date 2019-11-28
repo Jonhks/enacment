@@ -14,7 +14,6 @@
         <p v-else-if="number % 5 === 0" class="rojo">{{ number }} </p>
         <p v-else-if="number % 3 === 0" class="verde">{{ number }} </p>
         <p v-else>{{number}}</p>
-
       </div>
     </div>
   </div>
