@@ -7,7 +7,9 @@
           <button @click="evaluated">Calcular</button>
         </div>
       <div v-for="number in arrNum" :key="number" >
-        <p v-if="number % 3 === 0 && number % 5 === 0  || number % 3 === 0 && number % 7 === 0 || number % 7 === 0 && number % 5 === 0 " class="azul">{{ number }} *</p>
+        <p v-if="number % 3 === 0 && number % 5 === 0" class="verde"> 3, (5) * </p>
+        <p v-if="number % 3 === 0 && number % 7 === 0" class="verde"> 3, (7) * </p>
+        <p v-if="number % 5 === 0 && number % 7 === 0" class="rojo"> 5, (7) * </p>
         <p v-else-if="number % 7 === 0" class="morado">{{ number }} </p>
         <p v-else-if="number % 5 === 0" class="rojo">{{ number }} </p>
         <p v-else-if="number % 3 === 0" class="verde">{{ number }} </p>
@@ -37,8 +39,7 @@ export default {
       }
 
        var db = firebase.firestore();
-      alert('asd')
-      db.collection("numbers").add({
+       db.collection("numbers").add({
        arrnum: this.arrNum
     })
 
