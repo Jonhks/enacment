@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     evaluated: function () {
-      for(let i = 1; i <= this.limit; i++){
+      for(let i = 1; i <= this.limit; i++){ 
         this.arrNum.push(i)
       }
 
