@@ -4,16 +4,10 @@
       <label for="numbers">Ingresa tu numero: </label>
       <input type="number" v-model="limit" id="numbers">
         <div>
-          <button @click="evaluated">Calcular</button>
+          <button @click="evaluated" @keypress.enter="evaluated" >Calcular</button>
         </div>
       <div v-for="number in arrNum" :key="number" >
-        <p v-if="number % 3 === 0 && number % 5 === 0" class="verde"> 3, (5) * </p>
-        <p v-if="number % 3 === 0 && number % 7 === 0" class="verde"> 3, (7) * </p>
-        <p v-if="number % 5 === 0 && number % 7 === 0" class="rojo"> 5, (7) * </p>
-        <p v-else-if="number % 7 === 0" class="morado">{{ number }} </p>
-        <p v-else-if="number % 5 === 0" class="rojo">{{ number }} </p>
-        <p v-else-if="number % 3 === 0" class="verde">{{ number }} </p>
-        <p v-else>{{number}}</p>
+        <p :class="number.clase">{{ number.index }}</p>
       </div>
     </div>
   </div>
@@ -34,7 +28,18 @@ export default {
   methods: {
     evaluated: function () {
       for(let i = 1; i <= this.limit; i++){ 
-        this.arrNum.push(i)
+        if(i % 3 == 0 ){
+        let clase = 'verde'
+         i % 3 == 0 && i % 7 == 0 ? this.arrNum.push({'index': `3 (7) *` , 'number': i, 'clase': clase }) : null
+         i % 3 == 0 && i % 5 == 0 ? this.arrNum.push({'index': `3 (5) *` , 'number': i, 'clase': clase }) : null
+         this.arrNum.push({'index': i, 'number': i, 'clase': clase })
+        } else if (i % 5 == 0){
+          let clase = 'rojo'
+          i % 5 == 0 && i % 7 == 0 ? this.arrNum.push({'index': `5 (7) *` , 'number': i, 'clase': clase }) : this.arrNum.push({'index': i, 'number': i, 'clase': clase })
+        } else if (i % 7 == 0 ) {
+          let clase = 'morado'
+          this.arrNum.push({'index': i, 'number': i, 'clase': clase })
+        }
       }
 
        var db = firebase.firestore();
