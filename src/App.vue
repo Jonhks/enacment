@@ -30,12 +30,12 @@ export default {
       for(let i = 1; i <= this.limit; i++){ 
         if(i % 3 == 0 ){
         let clase = 'verde'
-         i % 3 == 0 && i % 7 == 0 ? this.arrNum.push({'index': `3 (7) *` , 'number': i, 'clase': clase }) : null
-         i % 3 == 0 && i % 5 == 0 ? this.arrNum.push({'index': `3 (5) *` , 'number': i, 'clase': clase }) : null
+         i % 3 == 0 && i % 7 == 0 ? this.arrNum.push({'index': `${i} (3, 7)*` , 'number': i, 'clase': clase }) : null
+         i % 3 == 0 && i % 5 == 0 ? this.arrNum.push({'index': `${i} (3, 5) *` , 'number': i, 'clase': clase }) : null
          this.arrNum.push({'index': i, 'number': i, 'clase': clase })
         } else if (i % 5 == 0){
           let clase = 'rojo'
-          i % 5 == 0 && i % 7 == 0 ? this.arrNum.push({'index': `5 (7) *` , 'number': i, 'clase': clase }) : this.arrNum.push({'index': i, 'number': i, 'clase': clase })
+          i % 5 == 0 && i % 7 == 0 ? this.arrNum.push({'index': `${i} (5, 7) *` , 'number': i, 'clase': clase }) : this.arrNum.push({'index': i, 'number': i, 'clase': clase })
         } else if (i % 7 == 0 ) {
           let clase = 'morado'
           this.arrNum.push({'index': i, 'number': i, 'clase': clase })
